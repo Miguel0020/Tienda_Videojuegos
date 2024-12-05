@@ -1,5 +1,5 @@
 
-const baseURL = "https://3000-idx-apibd-1729303596730.cluster-f4iwdviaqvc2ct6pgytzw4xqy4.cloudworkstations.dev";
+const baseURL = "3000-idx-apibd-1729303596730.cluster-f4iwdviaqvc2ct6pgytzw4xqy4.cloudworkstations.dev";
 const token = "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3Mjk5MDkwNjAsImlkIjoiYTQwOWQwMjQtYmJjYi00MjRhLWExZDAtMDIwM2FhOWRkNjVkIn0.zPszizbmGFU5Gr1XKSIkh0McM2HE2nATr-frY0YUU5HsMFyLByIbCROCoYF3yHQUS1SDHo_vGA569QDYgQhdAw"
 
 // Función para cargar las tarjetas
