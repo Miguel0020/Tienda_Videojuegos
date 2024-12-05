@@ -1,5 +1,5 @@
 
-const baseURL = "https://3000-idx-apibd-1729303596730.cluster-f4iwdviaqvc2ct6pgytzw4xqy4.cloudworkstations.dev";
+const baseURL = "http://localhost:3000";
 const token = "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhIjoicnciLCJpYXQiOjE3Mjk5MDkwNjAsImlkIjoiYTQwOWQwMjQtYmJjYi00MjRhLWExZDAtMDIwM2FhOWRkNjVkIn0.zPszizbmGFU5Gr1XKSIkh0McM2HE2nATr-frY0YUU5HsMFyLByIbCROCoYF3yHQUS1SDHo_vGA569QDYgQhdAw"
 
 // Función para cargar las tarjetas
@@ -31,8 +31,6 @@ function cargarTarjetas() {
     })
     .catch(error => console.error('Error al cargar las tarjetas:', error));
 }
-
-
 // Llama a la función al cargar la página
 document.addEventListener("DOMContentLoaded", cargarTarjetas);
 
@@ -42,7 +40,7 @@ function sendForm() {
   const description = document.getElementById("description");
   const value = document.getElementById("value");
   const image = document.getElementById("image");
-  const categoriaId = document.getElementById("categoria"); // Obtener ID de la categoría
+  const categoriaId = document.getElementById("categoria"); 
 
 
   const body = {
@@ -87,13 +85,12 @@ function eliminar(tarj_id) {
 
 // Función para llenar el formulario de edición de producto
 function editForm(id, title, description, value, image, categoriaId) {
-    idedit = id;
+    tarj_id = id;
     document.getElementById("title-edit").value = title;
     document.getElementById("description-edit").value = description;
     document.getElementById("value-edit").value = value;
     document.getElementById("image-edit").value = image;
 
-    // Asignar la categoría seleccionada en el select de edición
     const categoriaSelectEdit = document.getElementById("categoria-edit");
     categoriaSelectEdit.value = categoriaId; 
 }
@@ -105,17 +102,17 @@ function saveedit() {
     const description = document.getElementById("description-edit");
     const value = document.getElementById("value-edit");
     const image = document.getElementById("image-edit");
-    const categoriaId = document.getElementById("categoria-edit").value; // Obtener ID de la categoría
+    const categoriaId = document.getElementById("categoria-edit").value; 
 
     const body = {
         title: title.value,
         description: description.value,
         value: value.value,
         images: [image.value],
-        categoria_id: categoriaId // Incluir ID de la categoría
+        categoria_id: categoriaId 
     };
 
-    fetch(`${baseURL}/tarjeta/${idedit}`, {
+    fetch(`${baseURL}/tarjeta/${tarj_id}`, {
         method: "PUT",
         headers: {
             "Authorization": token,
@@ -129,7 +126,7 @@ function saveedit() {
         description.value = "";
         value.value = "";
         image.value = "";
-        location.reload(); // Recargar para mostrar los cambios
+        location.reload(); 
     })
     .catch(error => console.error('Error al actualizar la tarjeta:', error));
 }
@@ -243,13 +240,13 @@ function cargarCategoriasSelect() {
         const categoriaSelect = document.getElementById("categoria");
         const categoriaSelectEdit = document.getElementById("categoria-edit");
         
-        categoriaSelect.innerHTML = ""; // Limpiar las opciones actuales
-        categoriaSelectEdit.innerHTML = ""; // Limpiar las opciones actuales para edición
+        categoriaSelect.innerHTML = ""; 
+        categoriaSelectEdit.innerHTML = ""; 
 
         categorias.forEach(categoria => {
             const option = document.createElement("option");
             option.value = categoria.id; // Usa el ID de la categoría
-            option.textContent = categoria.nombre; // Muestra el nombre de la categoría
+            option.textContent = categoria.nombre; 
 
             const optionEdit = option.cloneNode(true); // Clona la opción para el modal de edición
             categoriaSelect.appendChild(option);
